@@ -19,27 +19,31 @@ const pizzaTypes = {
     `Hey! Happy to serve your pizza. On our menu we have ${pizzaTypes.pizza1.name}, ${pizzaTypes.pizza2.name}, and ${pizzaTypes.pizza3.name}.`
   ); */
 
+// Checks if the user input exists in the menu. It is case insensitive.
 function menuCheck(pizzaName) {
   return (
-    pizzaName === pizzaTypes.pizza1.name.toLowerCase() ||
-    pizzaName === pizzaTypes.pizza2.name.toLowerCase() ||
-    pizzaName === pizzaTypes.pizza3.name.toLowerCase()
+    pizzaName.toLowerCase() === pizzaTypes.pizza1.name.toLowerCase() ||
+    pizzaName.toLowerCase() === pizzaTypes.pizza2.name.toLowerCase() ||
+    pizzaName.toLowerCase() === pizzaTypes.pizza3.name.toLowerCase()
   );
 }
 
+// Calculates the bill by taking two variables 
+//if the pizza name entered is correct and is in the object, it returns the multiplation of its price with order quantity
 
 function priceCalculation(pizzaName, orderQuantity) {
-  if (pizzaName === pizzaTypes.pizza1.name) {
+  if (pizzaName.toLowerCase() === pizzaTypes.pizza1.name.toLowerCase()) {
     return pizzaTypes.pizza1.price * orderQuantity;
-  } else if (pizzaName === pizzaTypes.pizza2.name) {
+  } else if (pizzaName.toLowerCase() === pizzaTypes.pizza2.name.toLowerCase()) {
     return pizzaTypes.pizza2.price * orderQuantity;
-  } else if (pizzaName === pizzaTypes.pizza3.name) {
+  } else if (pizzaName.toLowerCase() === pizzaTypes.pizza3.name.toLowerCase()) {
     return pizzaTypes.pizza3.price * orderQuantity;
   } else {
     return 0; // Invalid pizza name, return 0 or handle it as needed
   }
 }
 
+// Then calculate the waiting time
 
 function cookingTime(orderQuantity) {
   if (orderQuantity >= 1 && orderQuantity <= 2) {
@@ -51,8 +55,7 @@ function cookingTime(orderQuantity) {
   }
 }
 
-
-// The main function which incorporates all the above functions and carries out the order process
+// Finally, the main function which incorporates all the previous functions and carries out the order process
 
 function orderProcess() {
   alert(
@@ -74,6 +77,4 @@ function orderProcess() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  orderProcess(); // Call the orderProcess function here, after the DOM is fully loaded
-});
+  orderProcess(); // Calling the orderProcess function here, after the DOM is fully loaded
