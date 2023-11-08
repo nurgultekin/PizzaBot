@@ -21,9 +21,9 @@ const pizzaTypes = {
 
 function menuCheck(pizzaName) {
   return (
-    pizzaName === pizzaTypes.pizza1.name ||
-    pizzaName === pizzaTypes.pizza2.name ||
-    pizzaName === pizzaTypes.pizza3.name
+    pizzaName === pizzaTypes.pizza1.name.toLowerCase() ||
+    pizzaName === pizzaTypes.pizza2.name.toLowerCase() ||
+    pizzaName === pizzaTypes.pizza3.name.toLowerCase()
   );
 }
 
