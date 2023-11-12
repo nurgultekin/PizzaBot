@@ -1,6 +1,4 @@
-// Executing this in a form on the browser
-
-
+// Executing the program in a form on the browser
 
 const pizzaTypes = {
     pizza1: {
@@ -47,7 +45,8 @@ function cookingTime(orderQuantity) {
     }
 }
 
-function orderProcess() {
+function orderProcess(e) {
+    e.preventDefault();  //Otherwise the page renews as soon as I "submit", then the response disappears as soon as I click submit.
     const pizzaName = document.getElementById("pizzaType").value;
     const quantity = parseInt(document.getElementById("quantity").value);
     const orderResult = document.getElementById("orderResult");
@@ -57,10 +56,19 @@ function orderProcess() {
         const orderCookingTime = cookingTime(quantity);
 
         orderResult.innerHTML = `You ordered ${quantity} ${pizzaName} pizza(s). The total price is $${orderPrice} and the estimated cooking time is ${orderCookingTime} minutes. Enjoy your meal!`;
+
+        // The response is hidden after 15 seconds
+        setTimeout(function () {
+            orderResult.innerHTML = '';
+        }, 15000); // It should appear for 15 seconds on the screen.
     } else {
         orderResult.innerHTML = "Invalid pizza name. Please choose a pizza from the menu.";
     }
 }
-// Add an event listener to the form to handle the submission and get a response
+// Adding an event listener to the form to handle the submission and get a response
 const pizzaForm = document.getElementById("pizzaForm");
 pizzaForm.addEventListener("submit", orderProcess);
+
+
+/* let element = document.getElementById("pizzaForm")
+element.style.fontSize = 40; */
